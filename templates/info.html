@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<title>INFO</title>
+	<style>
+    
+
+    .btn,.btn-primary{
+			background-image: linear-gradient(to right, #e040fb, #00bcd4);
+			text-align: center;
+			width: 150px;
+			border-radius: 10px;
+			text-transform: uppercase;
+			border-style: solid;
+			overflow: hidden;
+			box-shadow: 0 4px 12px 0 rgba(152, 160, 180, 10);
+			font-size: 1.1em;
+			letter-spacing: 0.2em;
+		}
+button:hover{
+	background-image: linear-gradient(to bottom right, blue,red);
+}
+
+
+a.nav-link:hover{ 
+    background-image: linear-gradient(to bottom right, purple, blue); 
+    color: yellow !important; 
+    border-radius: 0.5em;
+} 
+h2{
+font-weight: 700;
+    color: #000851 ;
+    background: -webkit-linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+
+}
+
+.f{
+  font-weight: bold;
+}
+
+    </style>
+    
+</head>
+
+<body style="background-image: linear-gradient(to bottom right, #e1bee7, #b2ebf2);">
+	
+<header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{{url_for('home')}}">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/41SVPG363NL.png" alt="CINEMIX" height="32px">
+                <strong>CINE<span style="color:red">MIX</span></strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{ url_for('static',filename='visualization/hello.html') }}">Analytics</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('review')}}">Recommendations</a>
+                </li>
+              </ul>
+
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">            
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/login"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                    </li>
+                </ul>    
+            </div>
+          </nav>
+      </header>
+<center>
+<div class="container" style="background-image: linear-gradient(to top, #ffffff, #dddddd); overflow: hidden; padding: 40px; margin: 50px; ">
+
+	<span><img src="{{data.Poster}}" align="left" HSPACE="50" VSPACE="50"><br><b><h2>{{data.Title}}</h2></b> </span>
+	<br>
+<p>
+	<b>Movie Description:</b>
+	<div>{{data.Plot}}</div>
+</p>
+<p>
+	<div><b>Ratings:</b>{{data.Ratings[0].Value}}</div>
+	<div><b>Director:</b>{{data.Director}}</div>
+	<div><b>Writer:</b>{{data.Writer}}</div>
+	<div><b>Actors:</b>{{data.Actors}}</div>
+</p>
+
+{% for mesg in get_flashed_messages() %}
+      <script>alert("{{ mesg }}")</script>
+{% endfor %}
+{% block content %}
+
+<div class="formwrapper">
+  <h2 class="title" style="color: black !important; font-size: 25px;">Give Review</h2>
+  <br>
+  <form method="POST" action="/sub">
+    {{form.hidden_tag()}}
+      <div class="form-group">{{ form.rating.label(class="form-control-label f") }}<b>(0-10):</b> {{ form.rating(class="form-control-label")}}</div>
+      <div class="form-group">{{ form.review.label(class="form-control-label f") }}<b>:</b> {{ form.review(class="form-control-label") }}</div>
+      {{ form.submit(class="btn btn-primary") }}
+  </form>
+</div>
+
+{% endblock %}
+
+</div>
+</center>
+
+<footer style="background-color: #eee !important; bottom: 0 !important;" id="sticky-footer" class="py-4 bg-light text-dark-50">
+        <div class="container text-center">
+          <small>Copyright &copy; CINEMIX</small>
+        </div>
+      </footer>
+
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

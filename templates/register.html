@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<style type="text/css">
+	
+	.btn,.btn-primary{
+		background-image: linear-gradient(to right, #e040fb, #00bcd4);
+		text-align: center;
+		width: 180px;
+		border-radius: 10px;
+		text-transform: uppercase;
+		border-style: solid;
+		overflow: hidden;
+		box-shadow: 0 4px 12px 0 rgba(152, 160, 180, 10);
+		font-size: 1.1em;
+		letter-spacing: 0.2em;
+	}
+	.fil{
+			width: 50%;
+			margin: 0 auto;
+	}
+	.al{
+			margin: 50px auto;
+	}
+	.all{
+			margin-top: 30px;
+	}
+
+    </style>
+<body style="background-image: linear-gradient(to bottom right, #e1bee7, #b2ebf2); height: 100vh; overflow: hidden;">
+	<div class="container">
+		<form method="POST" action="">
+		{{form.hidden_tag()}}
+		<fieldset class="form-group al">
+			<legend style="text-align: center; font-size: 30px;">Register Here</legend>
+			<dir class="form-group fil all" >
+				{{form.username.label(class="form-control-label")}}
+				{{form.username(class="form-control form-control-md")}}
+			</dir>
+			<dir class="form-group fil" >
+				{{form.email.label(class="form-control-label")}}
+				{{form.email(class="form-control form-control-md")}}
+			</dir>
+			<dir class="form-group fil" >
+				{{form.password.label(class="form-control-label")}}
+				{{form.password(class="form-control form-control-md")}}
+			</dir>
+			<dir class="form-group fil" >
+				{{form.confirm_password.label(class="form-control-label")}}
+				{{form.confirm_password(class="form-control form-control-md")}}
+			</dir>
+		</fieldset>
+		<div class="form-group" style="margin-left: 43%;">
+			{{form.submit(class="btn btn-primary")}}
+		</div>
+	</form>
+	<div style="margin-left: 60px; color: black; text-align: center;">
+		Already have a account! <a href="{{url_for('login')}}">Sign In</a>
+	</div>
+	</div>
+		
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
